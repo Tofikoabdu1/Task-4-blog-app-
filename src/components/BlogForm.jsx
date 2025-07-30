@@ -40,18 +40,21 @@ const BlogForm = ({ initialData = {}, onSubmit, mode = "create" }) => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      <label className="font-bold">Title</label>
       <input
         className="w-full border p-2 rounded"
         placeholder="Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
+      <label className="font-bold">Image URL</label>
       <input
         className="w-full border p-2 rounded"
         placeholder="Image URL"
         value={image}
         onChange={(e) => setImage(e.target.value)}
       />
+      <label className="font-bold">Author</label>
       <input
         className="w-full border p-2 rounded"
         placeholder="Author"
@@ -59,21 +62,32 @@ const BlogForm = ({ initialData = {}, onSubmit, mode = "create" }) => {
         onChange={(e) => setAuthor(e.target.value)}
       />
 
+      <label className="font-bold">Description</label>
       <input
         className="w-full border p-2 rounded"
         placeholder="Description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       />
+      <label className="font-bold">Content</label>
       <textarea
         className="w-full border p-2 rounded min-h-[120px]"
         placeholder="Content"
         value={content}
         onChange={(e) => setContent(e.target.value)}
       />
-      <Button type="submit">
-        {mode === "edit" ? "Update" : "Create"} Blog
-      </Button>
+      <div className="flex justify-between space-x-2">
+        <Button type="submit">
+          {mode === "edit" ? "Update" : "Create"} Blog
+        </Button>
+        <Button
+          className={"bg-red-500 text-white hover:bg-red-400"}
+          type="button"
+          onClick={() => window.history.back()}
+        >
+          Cancel
+        </Button>
+      </div>
     </form>
   );
 };

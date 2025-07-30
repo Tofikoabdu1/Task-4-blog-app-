@@ -26,6 +26,11 @@ const BlogDetails = ({ blogs }) => {
           id: blog.id,
           title: blog.title,
           content: blog.content,
+          image: blog.image,
+          author: blog.author,
+          createdAt: blog.createdAt,
+          description: blog.description,
+
           // add only necessary fields
         },
       ]);
