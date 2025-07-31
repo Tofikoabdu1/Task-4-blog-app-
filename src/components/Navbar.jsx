@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button"; // Assuming shadcn/ui is set up
-import Logo from "../assets/Logo.png"; // Adjust the path as necessary
+import { Button } from "@/components/ui/button";
+
 const Navbar = () => {
   return (
     <nav className="flex items-center justify-between px-6 py-4 shadow bg-transparent">
-      {/* <img src={Logo} alt="Logo" className="h-15" /> */}
       <h1 className="text-3xl font-bold" style={{ fontFamily: "K2D" }}>
         Blog
       </h1>

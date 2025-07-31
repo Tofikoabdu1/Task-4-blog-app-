@@ -1,4 +1,5 @@
 // src/pages/CreateBlog.jsx
+import Footer from "@/components/Footer";
 import BlogForm from "../components/BlogForm";
 import { useNavigate } from "react-router-dom";
 
@@ -20,9 +21,16 @@ const CreateBlog = ({ blogs, setBlogs }) => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6">
-      <h2 className="text-2xl font-bold mb-4">Create a New Blog Post</h2>
-      <BlogForm onSubmit={handleCreate} mode="create" initialData={{ blogs }} />
+    <div className="p-6">
+      <div className="max-w-2xl mx-auto p-6">
+        <h2 className="text-2xl font-bold mb-4">Create a New Blog Post</h2>
+        <BlogForm
+          onSubmit={handleCreate}
+          mode="create"
+          initialData={{ blogs }}
+        />
+      </div>
+      <Footer />
     </div>
   );
 };

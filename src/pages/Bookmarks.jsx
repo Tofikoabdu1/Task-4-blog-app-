@@ -2,6 +2,7 @@ import { useAtom } from "jotai";
 import { Button } from "@/components/ui/button";
 import { bookmarksAtom } from "../atoms/bookmarkAtom";
 import BookMarkedBlog from "@/components/BookMarkedBlog";
+import Footer from "@/components/Footer";
 
 const Bookmarks = () => {
   const [bookmarks, setBookmarks] = useAtom(bookmarksAtom);
@@ -18,18 +19,6 @@ const Bookmarks = () => {
           <p>No bookmarks yet.</p>
         ) : (
           bookmarks.map((post) => (
-            // <div
-            //   key={post.id}
-            //   className="m-7 border-2 border-gray-400 p-4 rounded"
-            // >
-            //   <h3>{post.title}</h3>
-            //   <Button
-            //     onClick={() => removeBookmark(post.id)}
-            //     className="text-red-500 underline"
-            //   >
-            //     Remove
-            //   </Button>
-            // </div>
             <BookMarkedBlog
               post={post}
               key={post.id}
@@ -38,6 +27,7 @@ const Bookmarks = () => {
           ))
         )}
       </div>
+      <Footer />
     </div>
   );
 };

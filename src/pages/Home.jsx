@@ -15,10 +15,12 @@ const Home = ({ blogs }) => {
           No blog posts yet. Create one to get started!
         </p>
       ) : (
-        <div className="flex flex-wrap gap-4">
-          {blogs.map((blog) => (
-            <BlogCard key={blog.id} blog={blog} />
-          ))}
+        <div className="px-10">
+          <div className="flex flex-wrap gap-4">
+            {blogs.map((blog) => (
+              <BlogCard key={blog.id} blog={blog} />
+            ))}
+          </div>
         </div>
       )}
 

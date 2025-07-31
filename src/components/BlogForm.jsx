@@ -1,6 +1,6 @@
 // src/components/BlogForm.jsx
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button"; // Optional if you're using shadcn/ui
+import { Button } from "@/components/ui/button";
 
 const BlogForm = ({ initialData = {}, onSubmit, mode = "create" }) => {
   const [title, setTitle] = useState("");

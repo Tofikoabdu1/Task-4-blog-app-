@@ -7,8 +7,10 @@ import profile from "../assets/profile.jpeg";
 import bookmarkicon from "../assets/bookmarkicon.png";
 import deleteicon from "../assets/deleteicon.png";
 import editicon from "../assets/editicon.png";
+import blogbookmark from "../assets/blogbookmark.png";
+import Footer from "@/components/Footer";
 
-const BlogDetails = ({ blogs }) => {
+const BlogDetails = ({ blogs, setBlogs }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const blog = blogs.find((item) => item.id === id);
@@ -37,14 +39,23 @@ const BlogDetails = ({ blogs }) => {
     }
   };
 
-  useEffect(() => {
-    if (!blog) {
-      alert("Blog not found");
-      navigate("/");
-    }
-  }, [blog, navigate]);
+  // useEffect(() => {
+  //   if (!blog) {
+  //     alert("Blog not found");
+  //     navigate("/");
+  //   }
+  // }, [blog, navigate]);
 
   if (!blog) return null;
+  const handleDelete = () => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this blog?"
+    );
+    if (confirmDelete) {
+      setBlogs((prev) => prev.filter((b) => b.id !== blog.id));
+      navigate("/");
+    }
+  };
 
   return (
     <div className="p-6">
@@ -65,12 +76,11 @@ const BlogDetails = ({ blogs }) => {
         <div className="flex gap-4">
           <button
             onClick={toggleBookmark}
-            className={`cursor-pointer px-4 py-2 rounded ${
-              isBookmarked ? "bg-red-500" : ""
-            } text-white`}
+            className={`cursor-pointer px-4 py-2 rounded bg-white`}
           >
             {isBookmarked ? (
-              "Remove Bookmark"
+              // "Remove Bookmark"
+              <img className="w-6 h-6" src={blogbookmark} alt="" />
             ) : (
               <img className="w-6 h-6" src={bookmarkicon} alt="" />
             )}
@@ -82,8 +92,10 @@ const BlogDetails = ({ blogs }) => {
           >
             <img className="w-6 h-6" src={editicon} alt="" />
           </button>
-
-          <img className="w-6 h-6" src={deleteicon} alt="" />
+          <button onClick={handleDelete} className="cursor-pointer">
+            <img className="w-6 h-6" src={deleteicon} alt="" />
+          </button>
+          {/* <img className="w-6 h-6" src={deleteicon} alt="" /> */}
         </div>
       </div>
       <div>
@@ -98,37 +110,7 @@ const BlogDetails = ({ blogs }) => {
         </h2>
         <p className="text-black text-lg">{blog.content}</p>
       </div>
-
-      <div className="max-w-3xl mx-auto p-6">
-        <button
-          onClick={() => navigate("/")}
-          className="text-blue-500 underline mb-4"
-        >
-          ← Back to Home
-        </button>
-        <h2 className="text-3xl font-bold">{blog.title}</h2>
-        <p className="text-sm text-gray-500">
-          By {blog.author} on {new Date(blog.createdAt).toLocaleDateString()}
-        </p>
-        <p className="mt-2 text-lg text-gray-700">{blog.description}</p>
-        <div className="mt-4 whitespace-pre-wrap">{blog.content}</div>
-        <div className="mt-6 space-x-4">
-          <button
-            onClick={() => navigate(`/edit/${blog.id}`)}
-            className="px-4 py-2 bg-yellow-400 text-black rounded"
-          >
-            Edit
-          </button>
-          <button
-            onClick={toggleBookmark}
-            className={`px-4 py-2 rounded ${
-              isBookmarked ? "bg-red-500" : "bg-blue-600"
-            } text-white`}
-          >
-            {isBookmarked ? "Remove Bookmark" : "Bookmark"}
-          </button>
-        </div>
-      </div>
+      <Footer />
     </div>
   );
 };

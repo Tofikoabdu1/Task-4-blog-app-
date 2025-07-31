@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "./ui/button";
-import profile from "../assets/profile.jpeg"; // Assuming you have a default profile image
-import blogbookmark from "../assets/blogbookmark.png"; // Assuming you have a bookmark icon
+import profile from "../assets/profile.jpeg";
+import blogbookmark from "../assets/blogbookmark.png";
 
 const BookMarkedBlog = ({ post, onRemove }) => {
   return (
@@ -33,9 +33,6 @@ const BookMarkedBlog = ({ post, onRemove }) => {
         <img className="w-full h-full object-cover" src={post.image} alt="" />
       </div>
       <p className="text-gray-500">{post.description}</p>
-      {/* <Button onClick={onRemove} className="text-red-500 underline">
-        Remove
-      </Button> */}
     </div>
   );
 };

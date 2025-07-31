@@ -7,10 +7,18 @@ import EditBlog from "./pages/EditBlog";
 import Bookmarks from "./pages/Bookmarks";
 import Navbar from "./components/Navbar";
 import { sampleBlogs } from "./data/sampleBlogs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
-  const [blogs, setBlogs] = useState(sampleBlogs);
+  // const [blogs, setBlogs] = useState(sampleBlogs);
+  const [blogs, setBlogs] = useState(() => {
+    const storedBlogs = localStorage.getItem("blogs");
+    return storedBlogs ? JSON.parse(storedBlogs) : [];
+  });
+  useEffect(() => {
+    localStorage.setItem("blogs", JSON.stringify(blogs));
+  }, [blogs]);
+
   return (
     <div>
       <Navbar />
@@ -20,7 +28,10 @@ function App() {
           path="/create"
           element={<CreateBlog setBlogs={setBlogs} blogs={blogs} />}
         />
-        <Route path="/blog/:id" element={<BlogDetails blogs={blogs} />} />
+        <Route
+          path="/blog/:id"
+          element={<BlogDetails blogs={blogs} setBlogs={setBlogs} />}
+        />
         <Route
           path="/edit/:id"
           element={<EditBlog blogs={blogs} setBlogs={setBlogs} />}
@@ -30,6 +41,5 @@ function App() {
     </div>
   );
 }
-// <Route path="/blog/:id" element={<BlogDetails blogs={blogs} />} />
 
 export default App;
