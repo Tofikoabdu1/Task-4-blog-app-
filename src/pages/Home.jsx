@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import BlogCard from "../components/BlogCard";
 import Hero from "@/components/Hero";
-import Footer from "@/components/footer";
+import Footer from "@/components/Footer";
 
 const Home = ({ blogs }) => {
   return (
