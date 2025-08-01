@@ -1,4 +1,3 @@
-// src/pages/CreateBlog.jsx
 import Footer from "@/components/Footer";
 import BlogForm from "../components/BlogForm";
 import { useNavigate } from "react-router-dom";

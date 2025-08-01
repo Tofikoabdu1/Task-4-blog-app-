@@ -1,6 +1,5 @@
 // src/pages/BlogDetails.jsx
 import { useParams, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 import { useAtom } from "jotai";
 import { bookmarksAtom } from "../atoms/bookmarkAtom";
 import profile from "../assets/profile.jpeg";
@@ -38,14 +37,6 @@ const BlogDetails = ({ blogs, setBlogs }) => {
       ]);
     }
   };
-
-  // useEffect(() => {
-  //   if (!blog) {
-  //     alert("Blog not found");
-  //     navigate("/");
-  //   }
-  // }, [blog, navigate]);
-
   if (!blog) return null;
   const handleDelete = () => {
     const confirmDelete = window.confirm(
@@ -79,7 +70,6 @@ const BlogDetails = ({ blogs, setBlogs }) => {
             className={`cursor-pointer px-4 py-2 rounded bg-white`}
           >
             {isBookmarked ? (
-              // "Remove Bookmark"
               <img className="w-6 h-6" src={blogbookmark} alt="" />
             ) : (
               <img className="w-6 h-6" src={bookmarkicon} alt="" />
@@ -95,7 +85,6 @@ const BlogDetails = ({ blogs, setBlogs }) => {
           <button onClick={handleDelete} className="cursor-pointer">
             <img className="w-6 h-6" src={deleteicon} alt="" />
           </button>
-          {/* <img className="w-6 h-6" src={deleteicon} alt="" /> */}
         </div>
       </div>
       <div>

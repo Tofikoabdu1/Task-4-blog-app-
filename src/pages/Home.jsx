@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 
 const Home = ({ blogs }) => {
   return (
-    <div className=" p-6">
+    <div className=" p-6 flex flex-col">
       <Hero />
       <h2 className="text-2xl font-bold mb-7">Recent Blogs</h2>
 
@@ -32,7 +32,7 @@ const Home = ({ blogs }) => {
           Create New Blog
         </Link>
       </div>
-      <Footer />
+      <Footer className="items-end" />
     </div>
   );
 };

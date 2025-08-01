@@ -1,5 +1,4 @@
 import { useAtom } from "jotai";
-import { Button } from "@/components/ui/button";
 import { bookmarksAtom } from "../atoms/bookmarkAtom";
 import BookMarkedBlog from "@/components/BookMarkedBlog";
 import Footer from "@/components/Footer";
@@ -12,11 +11,13 @@ const Bookmarks = () => {
   };
 
   return (
-    <div className=" p-6">
-      <h2 className="text-3xl font-bold">📌 Your Bookmarked Posts</h2>
-      <div className="mt-4 px-30">
+    <div className="px-4 sm:px-6 lg:px-20 py-6">
+      <h2 className="text-2xl sm:text-3xl font-bold mb-4">
+        📌 Your Bookmarked Posts
+      </h2>
+      <div className="space-y-6">
         {bookmarks.length === 0 ? (
-          <p>No bookmarks yet.</p>
+          <p className="text-gray-500">No bookmarks yet.</p>
         ) : (
           bookmarks.map((post) => (
             <BookMarkedBlog
@@ -27,7 +28,7 @@ const Bookmarks = () => {
           ))
         )}
       </div>
-      <Footer />
+      {bookmarks.length > 0 && <Footer />}
     </div>
   );
 };
